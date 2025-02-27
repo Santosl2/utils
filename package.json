@@ -1,10 +1,11 @@
 {
   "name": "@santosl2/utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/Santosl2/utils"
@@ -14,11 +15,16 @@
   ],
   "scripts": {
     "build": "tsup",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest"
   },
   "author": "Santosl2",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.5",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.6",
+    "ts-node": "^10.9.2",
     "tsup": "^8.3.6",
     "typescript": "^5.7.3"
   }
