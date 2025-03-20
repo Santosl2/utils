@@ -1,10 +1,8 @@
-name: Publish Package
+name: Publish Package on GitHub
 
 on:
-  push:
-    branches:
-      - main
-      - master
+  release:
+    types: [published]
 
 jobs:
   publish:
@@ -25,6 +23,7 @@ jobs:
     
     - name: Create dist folder
       run: npm run build
+
 
     - name: Version and publish
       run: |
