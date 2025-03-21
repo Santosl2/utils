@@ -27,6 +27,7 @@ jobs:
 
     - name: Version and publish
       run: |
+        git pull
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         npm version patch -m "Bump version to %s [skip ci]"
