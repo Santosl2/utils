@@ -1,6 +1,6 @@
 {
   "name": "@santosl2/utils",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "My utility library",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
