@@ -36,7 +36,6 @@ jobs:
         npm version patch -m "Bump version to %s [skip ci]"
         git tag v$(node -p "require('./package.json').version")
         git push origin v$(node -p "require('./package.json').version")
-        git push
         npm publish --provenance --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
