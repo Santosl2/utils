@@ -12,6 +12,7 @@ jobs:
     permissions:
       packages: write
       contents: write
+      id-token: write
     steps:
     - uses: actions/checkout@v2
     - name: Set up Node.js
@@ -33,7 +34,9 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         npm version patch -m "Bump version to %s [skip ci]"
+        git tag v$(node -p "require('./package.json').version")
+        git push origin v$(node -p "require('./package.json').version")
         git push
-        npm publish --access public
+        npm publish --provenance --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
