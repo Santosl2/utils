@@ -34,8 +34,13 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         npm version patch -m "Bump version to %s [skip ci]"
-        git tag v$(node -p "require('./package.json').version")
-        git push origin v$(node -p "require('./package.json').version")
+        TAG="v$(node -p "require('./package.json').version")"
+        if git rev-parse "$TAG" >/dev/null 2>&1; then
+          git tag -d "$TAG"
+          git push --delete origin "$TAG"
+        fi
+        git tag "$TAG"
+        git push origin "$TAG"
         npm publish --provenance --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
