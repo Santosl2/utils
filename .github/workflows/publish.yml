@@ -43,6 +43,7 @@ jobs:
           git push --delete origin "$TAG"
         fi
         git tag "$TAG"
+        git push origin HEAD:$GITHUB_REF_NAME
         git push origin "$TAG"
 
     - name: Publish to NPM
