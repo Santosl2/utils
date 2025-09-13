@@ -43,8 +43,8 @@ jobs:
           git push --delete origin "$TAG"
         fi
         git tag "$TAG"
-        git push origin HEAD:$GITHUB_REF_NAME
-        git push origin "$TAG"
+                git push origin HEAD:$GITHUB_REF_NAME
+        gh release create "$TAG" --title "$TAG" --notes "Release $TAG"   git push origin "$TAG"
 
     - name: Publish to NPM
       run: npm publish --provenance --access public
