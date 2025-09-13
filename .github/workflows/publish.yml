@@ -35,8 +35,12 @@ jobs:
         git config --global user.name "github-actions[bot]"
         npm version patch -m "Bump version to %s [skip ci]"
         TAG="v$(node -p "require('./package.json').version")"
+        # Delete local tag if it exists
         if git rev-parse "$TAG" >/dev/null 2>&1; then
           git tag -d "$TAG"
+        fi
+        # Delete remote tag if it exists
+        if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
           git push --delete origin "$TAG"
         fi
         git tag "$TAG"
